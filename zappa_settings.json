@@ -1,0 +1,14 @@
+{
+    "production": {
+        "app_function": "icons.app",
+        "aws_region": "us-west-2",
+        "profile_name": "rebble",
+        "project_name": "rebble-ios-noti",
+        "runtime": "python3.6",
+        "s3_bucket": "rebble-zappa-icons-prod",
+        "domain": "notif-app-icons.rebble.io",
+        "certificate_arn": "arn:aws:acm:us-east-1:032833028620:certificate/f1679030-d68e-4def-b2c3-5945ad43fe02",
+        "route53_enabled": false,
+        "memory_size": 128
+    }
+}
