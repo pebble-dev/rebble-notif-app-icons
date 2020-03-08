@@ -11,5 +11,5 @@ Pillow==5.0.0
 redis==2.10.6
 requests==2.18.4
 urllib3==1.22
-Werkzeug==0.14.1
+Werkzeug==0.15.3
 honeycomb-beeline==2.11.4
