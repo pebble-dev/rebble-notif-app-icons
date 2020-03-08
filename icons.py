@@ -1,11 +1,27 @@
-from gevent import monkey; monkey.patch_all()
-import io
+try:
+    import google.auth.exceptions
+    try:
+        import googleclouddebugger
+        googleclouddebugger.enable(module='notif-app-icons')
+    except (ImportError, google.auth.exceptions.DefaultCredentialsError):
+        print("Couldn't start cloud debugger")
+except ImportError:
+    print("Couldn't import google exceptions")
 
+import io
+from os import environ
+
+import beeline
+from beeline.middleware.flask import HoneyMiddleware
 from flask import Flask, request, abort, send_file
 from PIL import Image
 import requests
 
 app = Flask(__name__)
+
+if environ.get('HONEYCOMB_KEY'):
+     beeline.init(writekey=environ['HONEYCOMB_KEY'], dataset='rws', service_name='lp')
+     HoneyMiddleware(app, db_events=True)
 
 
 def get_apple_image_url(bundle_id, country):
@@ -41,3 +57,8 @@ def image(bundle_id, size):
 @app.route('/')
 def index():
     return 'hi'
+
+
+@app.route('/heartbeat')
+def heartbeat():
+    return 'ok'
