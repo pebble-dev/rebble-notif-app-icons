@@ -20,7 +20,7 @@ import requests
 app = Flask(__name__)
 
 if environ.get('HONEYCOMB_KEY'):
-     beeline.init(writekey=environ['HONEYCOMB_KEY'], dataset='rws', service_name='lp')
+     beeline.init(writekey=environ['HONEYCOMB_KEY'], dataset='rws', service_name='notif-app-icons')
      HoneyMiddleware(app, db_events=True)
 
 
