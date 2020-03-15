@@ -60,5 +60,6 @@ def index():
 
 
 @app.route('/heartbeat')
+@app.route('/notif-app-icons/heartbeat')
 def heartbeat():
     return 'ok'
